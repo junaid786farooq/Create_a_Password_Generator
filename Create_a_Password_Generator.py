@@ -1,45 +1,41 @@
+import string
 import random
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+# Define characters for the password
+letters = list(string.ascii_letters)
+numbers = list(string.digits)
 symbols = ['!', '#', '$', '%', '&','*', '+', '@',]
 
-print("Welcom to the PyPassword Generator!")
-num_letters = int(input("How many letter would you like in your password?\n"))
-num_symbols = int(input("How many symbols would you like in your password?\n"))
-num_numbers = int(input("How many numbers would you like in your password?\n"))
+print("Welcome to the PyPassword Generator!")
 
-## Easy Level
-# password = ""
-
-# for char in range(1, num_letters +1):
-#     password += random.choice(letters)
-
-# for char in range(1, num_symbols +1):
-#     password += random.choice(symbols)
-
-# for char in range(1, num_numbers +1):
-#     password += random.choice(numbers)
-
-# print(password)
-
-## Hard Level
-
-password_list = []
-
-for char in range(1, num_letters +1):
-    password_list += random.choice(letters)
-
-for char in range(1, num_symbols +1):
-    password_list += random.choice(symbols)
-
-for char in range(1, num_numbers +1):
-    password_list += random.choice(numbers)
-
-random.shuffle(password_list)
-
-hard_password = ""
-for char in password_list:
-    hard_password += char
-
-print(f"Your password is: {hard_password}")
+while True:
+    try:
+        # Get the number of each type of character for the password
+        num_letters = int(input("How many letter would you like in your password?\n"))
+        num_symbols = int(input("How many symbols would you like in your password?\n"))
+        num_numbers = int(input("How many numbers would you like in your password?\n"))
+    
+        # Generate the password list
+        password_list = []
+        
+        for char in range(1, num_letters +1):
+            password_list += random.choice(letters)
+        
+        for char in range(1, num_symbols +1):
+            password_list += random.choice(symbols)
+        
+        for char in range(1, num_numbers +1):
+            password_list += random.choice(numbers)
+        
+        # Shuffle the password list to ensure randomness
+        random.shuffle(password_list)
+        
+        # Join the list to form the final password string
+        hard_password = ''.join(password_list)
+        
+        # Display the result
+        print(f"Your password is: {hard_password}")
+        break
+    
+    except ValueError:
+        print("Error: Please enter a numeric value")
