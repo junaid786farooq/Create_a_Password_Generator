@@ -1,4 +1,4 @@
-# PyPassword Generator
+# Password Generator
 
 This Python program generates a random, secure password based on user-specified criteria. Users can choose the number of letters, symbols, and numbers they want in their password, and the program will generate a password accordingly.
 
